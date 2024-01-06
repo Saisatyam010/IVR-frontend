@@ -1,4 +1,12 @@
-import { lazy } from 'react'; 
+
+import { lazy } from 'react';
+import ManageDID from '../pages/ManageDID';
+
+
+
+
+const Campaign = lazy(() => import('../pages/ManageCampaigns/Campaign'));
+const BlockCallerID = lazy(() => import('../pages/BlockCallerID'));
 const Livecalls = lazy(() => import('../pages/Livecalls'));
 const Callhistory = lazy(() => import('../pages/Callhistory'));
 const Calendar = lazy(() => import('../pages/Calendar'));
@@ -10,12 +18,28 @@ const Settings = lazy(() => import('../pages/Settings'));
 const Tables = lazy(() => import('../pages/Tables'));
 const Alerts = lazy(() => import('../pages/UiElements/Alerts'));
 const Buttons = lazy(() => import('../pages/UiElements/Buttons'));
-
+const ManageCampaigns=lazy(()=>import('../pages/ManageCampaigns/ManagCampaigns'))
 const coreRoutes = [
   {
-    path: '/calendar',
-    title: 'Calender',
-    component: Calendar,
+    path: '/manage-campaign/:campaignId',
+    title: 'Campaign',
+    component: Campaign
+  },
+  {
+    path: '/manage-campaign',
+    title: 'Manage Campaign',
+    component: ManageCampaigns
+  },
+ 
+  {
+    path: '/block-callerid',
+    title: 'Block CallerId',
+    component: BlockCallerID
+  },
+  {
+    path: '/manage-did',
+    title: 'Manage DID',
+    component: ManageDID
   },
   {
     path: '/profile',
