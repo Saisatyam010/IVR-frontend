@@ -1,8 +1,11 @@
 
 import { lazy } from 'react';
 import ManageDID from '../pages/ManageDID';
+
 import SignIn from '../pages/Authentication/SignIn';
 import ECommerce from '../pages/Dashboard/ECommerce';
+import Addbuyer from '../pages/Addbuyer';
+
 
 
 
@@ -42,6 +45,11 @@ const coreRoutes = [
     path: '/block-callerid',
     title: 'Block CallerId',
     component: BlockCallerID
+  },
+  {
+    path: '/addbuyer',
+    title: 'Add Buyer',
+    component: Addbuyer
   },
   {
     path: '/manage-did',
