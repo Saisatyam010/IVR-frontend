@@ -1,3 +1,4 @@
+
 import { lazy } from 'react';
 import ManageDID from '../pages/ManageDID';
 import SignIn from '../pages/Authentication/SignIn';
@@ -8,6 +9,9 @@ import ECommerce from '../pages/Dashboard/ECommerce';
 
 const Campaign = lazy(() => import('../pages/ManageCampaigns/Campaign'));
 const BlockCallerID = lazy(() => import('../pages/BlockCallerID'));
+const Livecalls = lazy(() => import('../pages/Livecalls'));
+const Callhistory = lazy(() => import('../pages/Callhistory'));
+const Calendar = lazy(() => import('../pages/Calendar'));
 const Chart = lazy(() => import('../pages/Chart'));
 const FormElements = lazy(() => import('../pages/Form/FormElements'));
 const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
@@ -50,9 +54,19 @@ const coreRoutes = [
     component: Profile,
   },
   {
+    path: '/callhistory',
+    title: 'Profile',
+    component: Callhistory,
+  },
+  {
     path: '/forms/form-elements',
     title: 'Forms Elements',
     component: FormElements,
+  },
+  {
+    path: '/livecalls',
+    title: 'Forms Elements',
+    component: Livecalls,
   },
   {
     path: '/forms/form-layout',
