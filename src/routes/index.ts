@@ -1,7 +1,11 @@
 
 import { lazy } from 'react';
 import ManageDID from '../pages/ManageDID';
+
+import SignIn from '../pages/Authentication/SignIn';
+import ECommerce from '../pages/Dashboard/ECommerce';
 import Addbuyer from '../pages/Addbuyer';
+
 
 
 
@@ -25,6 +29,11 @@ const coreRoutes = [
     path: '/manage-campaign/:campaignId',
     title: 'Campaign',
     component: Campaign
+  },
+  {
+    path:'/dashboard',
+    title:'Dashbaord',
+    component:ECommerce
   },
   {
     path: '/manage-campaign',
@@ -97,6 +106,10 @@ const coreRoutes = [
     title: 'Buttons',
     component: Buttons,
   },
+  {
+    path:'/authentication',
+    component:SignIn,
+  }
 ];
 
 const routes = [...coreRoutes];

@@ -1,5 +1,21 @@
 import { BiRefresh } from "react-icons/bi";
+import { getLiveCalls } from "../api/liveCalls";
+import { useEffect, useState } from "react";
+import api from "../services/api";
 export default function Livecalls() {
+    const [liveCalls,setLiveCalls]=useState([])
+    const getLiveCalls=async()=>{
+        const res=await api.get('/auth/live-calls')
+         console.log(JSON.stringify(res)+"res")
+        
+         if(typeof(res.data)===typeof([]))
+        setLiveCalls(res.data)
+    }
+    
+    useEffect(()=>{
+     getLiveCalls();
+    
+    },[])
     return (
         <>
             <p className="font-bold text-[30px] pb-4 ms-2">
@@ -78,75 +94,34 @@ export default function Livecalls() {
                         </tr>
                     </thead>
                     <tbody className="dark:border-strokedark dark:bg-boxdark">
+                        {liveCalls.length>0&&liveCalls?.map((call:any)=>
                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-strokedark dark:bg-boxdark">
-                                Apple MacBook Pro 17"
+                                Publisher
                             </th>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Silver
+                            {call?.forwardedFrom}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
+                                {"Ashok"}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $2999
+                            {call?.to}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
+                            {call?.from}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $2999
+                                N/A
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
+                                N/A
                             </td>
                         </tr>
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:border-strokedark dark:bg-boxdark">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                White
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop PC
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $1999
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop PC
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $1999
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop PC
-                            </td> 
-                        </tr>
-                        <tr className="bg-white dark:border-gray-700 dark:border-strokedark dark:bg-boxdark">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Black
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Accessories
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $99
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Accessories
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $99
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Accessories
-                            </td> 
-                        </tr>
+                       )}
+                        {liveCalls.length==0&&<tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
+                           <td colSpan={9} scope="col" className="px-6 py-3 text-center dark:border-strokedark dark:bg-boxdark dark:text-white">No Calls Avaiable</td>
+                        </tr>}
                     </tbody>
                 </table>
             </div>
