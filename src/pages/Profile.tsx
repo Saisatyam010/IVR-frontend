@@ -3,7 +3,9 @@ import CoverOne from '../images/cover/cover-01.png';
 import userSix from '../images/user/user-06.png';
 
 const Profile = () => {
+  
   return (
+    
     <>
       <Breadcrumb pageName="Profile" />
 
