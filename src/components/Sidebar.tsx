@@ -347,14 +347,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Rate Card --> */}
               <li>
                 <NavLink
-                  to="/livecalls"
+                  to="/ratecard"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                     pathname.includes('settings') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <FaRegAddressCard size={20} />
-                  Live Calls
+                  Rate Card
                 </NavLink>
               </li>
               
