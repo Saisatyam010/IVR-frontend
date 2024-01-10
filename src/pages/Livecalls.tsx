@@ -12,9 +12,15 @@ export default function Livecalls() {
         setLiveCalls(res.calls.filter((call:any)=>call.parentCallSid!==null))
         
     }
+    
     useEffect(() => {
-        livedat();
-
+        
+    let stop = setInterval(()=>{
+            livedat();
+        },4000)
+        return ()=>{
+            clearInterval(stop)
+        }
     }, [])
     return (
         <>

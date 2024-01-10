@@ -1,4 +1,51 @@
+import { useEffect, useState } from "react"
+import api from "../services/api"
+import { DateRangePicker } from 'react-date-range';
 export default function Callhistory () {
+    const [callHistory,setCallHistory]=useState<any[]>([])
+   const handleSelect=(ranges:any)=>{
+            console.log(ranges);
+            // {
+            //   selection: {
+            //     startDate: [native Date Object],
+            //     endDate: [native Date Object],
+            //   }
+            // }
+          }
+    const fetchCallHistory=async()=>{
+        const res=await api.get('/auth/call-history',{headers:{
+            'Content-type':"application/json"
+        }})
+        console.log(JSON.stringify(res.data)+"data")
+        if(res.status==200)
+        setCallHistory(res.data.callHistory.filter((call:any)=>call.parentCallSid!=null))
+    }
+    useEffect(()=>{
+        fetchCallHistory();
+    },[])
+    function calculateDuration(startTimestamp:string, endTimestamp:string) {
+        const startDate:any = new Date(startTimestamp);
+        const endDate:any = new Date(endTimestamp);
+      
+        // Calculate the time difference in milliseconds
+        const timeDifference = endDate - startDate;
+      
+        // Calculate hours, minutes, and seconds
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+      
+        return {
+          hours,
+          minutes,
+          seconds
+        };
+      }
+      const selectionRange = {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection',
+      }
     return (
         <>
 
@@ -7,9 +54,15 @@ export default function Callhistory () {
 </p>
             <div className="dark:border-strokedark dark:bg-boxdark rounded-xl rounded-xl bg-white shadow-md">
                 <div className="flex p-2">
-                    <div className="ms-3">
+                    <div className="ms-3 relative">
                         <label className="font-bold ms-2 dark:text-white">Date Range</label><br />
                         <input className="rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" />
+                         <div className="absolute top-0 left-0">
+                         <DateRangePicker
+                           ranges={[selectionRange]}
+                           onChange={handleSelect}
+                       />
+                         </div>
                     </div>
 
                     <div className="ms-3">
@@ -93,94 +146,40 @@ export default function Callhistory () {
                         </tr>
                     </thead>
                     <tbody className="dark:border-strokedark dark:bg-boxdark">
+                        {callHistory.length>0&&callHistory.map(call=>{
+                        const duration=calculateDuration(call.startTime,call.endTime)
+                        return (
                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-strokedark dark:bg-boxdark">
-                                Apple MacBook Pro 17"
+                               {call.startTime}
                             </th>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Silver
+                            {call.endTime}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
+                                
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $2999
+                            {call.forwardedFrom}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
+                            {call.to}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $2999
+                            {call.from}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
+                               N/A
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $2999
+                            {call.status}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
+                             {duration.hours>0&&`${duration.hours} hours,`}{duration.minutes>0&&`${duration.minutes}  minutes,`} {duration.seconds} seconds`
                             </td>
                            
                         </tr>
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:border-strokedark dark:bg-boxdark">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                White
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop PC
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $1999
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop PC
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $1999
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop PC
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $1999
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Laptop
-                            </td>
-                        </tr>
-                        <tr className="bg-white dark:border-gray-700 dark:border-strokedark dark:bg-boxdark">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Black
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Accessories
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $99
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Accessories
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $99
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Accessories
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                $99
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                Accessories
-                            </td>
-                        </tr>
+                        )})}
                     </tbody>
                 </table>
             </div>
