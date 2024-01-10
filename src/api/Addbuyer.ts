@@ -12,3 +12,16 @@ export const addBuyerData = async (data:addBuyerInputs)=>{
     })
     return await res.json()
 }
+
+
+export const getCampainData = async ()=>{
+    const res = await fetch(`http://localhost:1337/auth/getAllBuyerDetail`,{
+        method:"get",
+        headers:{
+            "Content-type" : "application/json",
+            
+        },
+       
+    })
+    return await res.json()
+}

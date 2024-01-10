@@ -5,10 +5,10 @@ import SidebarLinkGroup from './SidebarLinkGroup';
 import { MdBlock, MdManageAccounts, MdOutlinePayment, MdSupportAgent } from "react-icons/md"
 import { FiPhoneCall } from "react-icons/fi";
 import { TbReportSearch } from "react-icons/tb";
-import {LiaShareAltSolid} from "react-icons/lia"
-import {RiGroupLine} from "react-icons/ri";
+import { LiaShareAltSolid } from "react-icons/lia"
+import { RiGroupLine } from "react-icons/ri";
 import { FaRegAddressCard } from "react-icons/fa";
-import {IoNotifications}from "react-icons/io5"
+import { IoNotifications } from "react-icons/io5"
 import { IoMdAddCircleOutline } from "react-icons/io";
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -65,9 +65,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}
+      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
@@ -104,7 +103,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
           {/* <!-- Menu Group --> */}
           <div>
-           
+
 
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Dashboard --> */}
@@ -118,11 +117,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     <React.Fragment>
                       <NavLink
                         to="/"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === '/' ||
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/' ||
                             pathname.includes('dashboard')) &&
                           'bg-graydark dark:bg-meta-4'
-                        }`}
+                          }`}
                         onClick={(e) => {
                           e.preventDefault();
                           sidebarExpanded
@@ -156,131 +154,123 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           />
                         </svg>
                         Dashboard
-                        
+
                       </NavLink>
-                     
+
                     </React.Fragment>
                   );
                 }}
               </SidebarLinkGroup>
-             
+
 
               {/* <!-- Menu Item Call History --> */}
               <li>
                 <NavLink
                   to="/callhistory"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('callhistory') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('callhistory') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
-                 <FiPhoneCall size={20}/>
+                  <FiPhoneCall size={20} />
                   Call History
                 </NavLink>
               </li>
-            
+
 
               {/* <!-- Menu Item Payment History --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/paymenthistory"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('paymenthistory') && 'bg-graydark dark:bg-meta-4'
-                  }`}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('paymenthistory') && 'bg-graydark dark:bg-meta-4'
+                    }`}
                 >
                   <MdOutlinePayment size={20} />
                   Payment History
                 </NavLink>
-              </li>
-             
+              </li> */}
 
-             
+
+
 
               {/* <!-- Menu Item Real Time Calls --> */}
               <li>
                 <NavLink
-                  to="/realtimecalls"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('realtimecalls') && 'bg-graydark dark:bg-meta-4'
-                  }`}
+                  to="/livecalls"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('realtimecalls') && 'bg-graydark dark:bg-meta-4'
+                    }`}
                 >
-                 <LiaShareAltSolid size={20} />
-                  Real Time Calls
+                  <LiaShareAltSolid size={20} />
+                  Live Calls
                 </NavLink>
               </li>
-           
+
               {/* <!-- Menu Item BuyerGroup --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/buyergroup"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('buyergroup') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('buyergroup') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
                   <RiGroupLine size={20} />
                   Buyer Group
                 </NavLink>
-              </li>
-              
+              </li> */}
+
               {/* <!-- Menu Item ManageDID --> */}
               <li>
                 <NavLink
                   to="/manage-did"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('settings') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('settings') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
-                  <MdSupportAgent size={20}/>
+                  <MdSupportAgent size={20} />
                   Manage DID
                 </NavLink>
               </li>
-            
+
               {/* <!-- Menu Item ManageCampaigns --> */}
               <li>
                 <NavLink
                   to="/manage-campaign"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('manage-campaign') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('manage-campaign') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
                   <MdManageAccounts size={20} />
-                  Manage Campaign
+                  Manage Buyer
                 </NavLink>
               </li>
-             
+
               {/* <!-- Menu Item Block Caller Id --> */}
               <li>
                 <NavLink
                   to="/block-callerid"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('settings') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('settings') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
                   <MdBlock size={20} />
                   Block CallerId
                 </NavLink>
               </li>
-             
+
 
               <li>
                 <NavLink
                   to="/addbuyer"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('callhistory') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('callhistory') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
-                 <IoMdAddCircleOutline  size={20}/>
+                  <IoMdAddCircleOutline size={20} />
                   Add Buyer
                 </NavLink>
               </li>
 
-               {/* <!-- Menu Item Reporting --> */}
-               <SidebarLinkGroup
+              {/* <!-- Menu Item Reporting --> */}
+              <SidebarLinkGroup
                 activeCondition={
                   pathname === '/reporting' || pathname.includes('forms')
                 }
@@ -290,11 +280,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     <React.Fragment>
                       <NavLink
                         to="#"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === '/forms' ||
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === '/forms' ||
                             pathname.includes('forms')) &&
                           'bg-graydark dark:bg-meta-4'
-                        }`}
+                          }`}
                         onClick={(e) => {
                           e.preventDefault();
                           sidebarExpanded
@@ -302,12 +291,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             : setSidebarExpanded(true);
                         }}
                       >
-                       <TbReportSearch  size={20}/>
+                        <TbReportSearch size={20} />
                         Reporting
                         <svg
-                          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
-                            open && 'rotate-180'
-                          }`}
+                          className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'
+                            }`}
                           width="20"
                           height="20"
                           viewBox="0 0 20 20"
@@ -324,9 +312,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </NavLink>
                       {/* <!-- Dropdown Menu Start --> */}
                       <div
-                        className={`translate transform overflow-hidden ${
-                          !open && 'hidden'
-                        }`}
+                        className={`translate transform overflow-hidden ${!open && 'hidden'
+                          }`}
                       >
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                           <li>
@@ -358,39 +345,37 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   );
                 }}
               </SidebarLinkGroup>
-             
+
               {/* <!-- Menu Item Rate Card --> */}
               <li>
                 <NavLink
                   to="/ratecard"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('settings') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('settings') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
                   <FaRegAddressCard size={20} />
                   Rate Card
                 </NavLink>
               </li>
-              
+
               {/* <!-- Menu Item Notification --> */}
               <li>
                 <NavLink
                   to="/notification"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('settings') &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('settings') &&
                     'bg-graydark dark:bg-meta-4'
-                  }`}
+                    }`}
                 >
                   <IoNotifications size={20} />
                   Notification
                 </NavLink>
               </li>
-             
+
             </ul>
           </div>
 
-        
+
         </nav>
         {/* <!-- Sidebar Menu --> */}
       </div>

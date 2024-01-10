@@ -1,21 +1,21 @@
 import { BiRefresh } from "react-icons/bi";
-import { getLiveCalls } from "../api/liveCalls";
+import {  getLivecalls } from "../api/liveCalls";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 export default function Livecalls() {
-    const [liveCalls,setLiveCalls]=useState([])
-    const getLiveCalls=async()=>{
-        const res=await api.get('/auth/live-calls')
-         console.log(JSON.stringify(res)+"res")
+    const [liveCalls, setLiveCalls] = useState([{}])
+   
+
+    const livedat = async () => {
+        const res = await getLivecalls()
+        console.log( res+"tyt");
+        setLiveCalls(res.calls.filter((call:any)=>call.parentCallSid!==null))
         
-         if(typeof(res.data)===typeof([]))
-        setLiveCalls(res.data)
     }
-    
-    useEffect(()=>{
-     getLiveCalls();
-    
-    },[])
+    useEffect(() => {
+        livedat();
+
+    }, [])
     return (
         <>
             <p className="font-bold text-[30px] pb-4 ms-2">
@@ -90,37 +90,37 @@ export default function Livecalls() {
                             </th>
                             <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
                                 Hangup
-                            </th> 
+                            </th>
                         </tr>
                     </thead>
                     <tbody className="dark:border-strokedark dark:bg-boxdark">
-                        {liveCalls.length>0&&liveCalls?.map((call:any)=>
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-strokedark dark:bg-boxdark">
-                                Publisher
-                            </th>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                            {call?.forwardedFrom}
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                {"Ashok"}
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                            {call?.to}
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                            {call?.from}
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                N/A
-                            </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                N/A
-                            </td>
-                        </tr>
-                       )}
-                        {liveCalls.length==0&&<tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
-                           <td colSpan={9} scope="col" className="px-6 py-3 text-center dark:border-strokedark dark:bg-boxdark dark:text-white">No Calls Avaiable</td>
+                        {liveCalls.length > 0 && liveCalls?.map((call: any) =>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
+                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-strokedark dark:bg-boxdark">
+                                    Publisher
+                                </th>
+                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
+                                    {call?.forwardedFrom}
+                                </td>
+                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
+                                    {"Ashok"}
+                                </td>
+                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
+                                    {call?.to}
+                                </td>
+                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
+                                    {call?.from}
+                                </td>
+                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
+                                    N/A
+                                </td>
+                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
+                                    N/A
+                                </td>
+                            </tr>
+                        )}
+                        {liveCalls.length == 0 && <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
+                            <td colSpan={9} scope="col" className="px-6 py-3 text-center dark:border-strokedark dark:bg-boxdark dark:text-white">No Calls Avaiable</td>
                         </tr>}
                     </tbody>
                 </table>

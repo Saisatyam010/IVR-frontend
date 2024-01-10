@@ -3,7 +3,7 @@ import { lazy } from 'react';
 import ManageDID from '../pages/ManageDID';
 
 import SignIn from '../pages/Authentication/SignIn';
-import ECommerce from '../pages/Dashboard/ECommerce';
+import ECommerce from '../pages/Dashboard/Dashboard';
 import Addbuyer from '../pages/Addbuyer';
 
 
@@ -37,8 +37,8 @@ const coreRoutes = [
   },
   {
     path: '/manage-campaign',
-    title: 'Manage Campaign',
-    component: ManageCampaigns
+    title: 'All Buyer',
+    component: Campaign
   },
  
   {

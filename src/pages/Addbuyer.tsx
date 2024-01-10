@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import {addBuyerData} from "../api/Addbuyer"
+import { Link } from "react-router-dom"
 export type addBuyerInputs={
     campaign_name:string,
     buyer_name:string,
@@ -167,9 +168,12 @@ const Addbuyer = () => {
                     <button type="submit" className="inline-flex items-center justify-center bg-primary py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 rounded-xl"  >
                         add
                     </button>
+                    <Link to="/manage-campaign">
                     <button className="inline-flex items-center justify-center bg-[#8A99AF] ms-4 py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 rounded-xl"  >
                         cancel
                     </button>
+                    </Link>
+                    
                 </p>
             </form>
 
