@@ -25,3 +25,4 @@ export const getCampainData = async ()=>{
     })
     return await res.json()
 }
+
