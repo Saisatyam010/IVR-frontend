@@ -71,6 +71,12 @@ const Campaign = () => {
               <th scope="col" className="px-6 py-3">
                 Distribution Value
               </th>
+              <th scope="col" className="px-6 py-3">
+                Distribution Value
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Action
+              </th>
 
             </tr>
           </thead>
@@ -111,6 +117,11 @@ const Campaign = () => {
                   </td>
                   <td className="px-6 py-4 dark:text-white">
                     {ele?.active_hours}
+                  </td>
+                  <td className="px-6 py-4 dark:text-white flex gap-3">
+                  <button>
+                    Pause
+                  </button>
                   </td>
                 </>
                   
