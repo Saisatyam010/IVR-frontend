@@ -11,7 +11,8 @@ export type addBuyerInputs={
     live_call_limit:string,
     daily_call_limit:string,
     monthly_call_limit:string,
-    buyer_status:string,
+    buyer_status:boolean,
+    priority:number,
     active_hours:string,
 
 }
@@ -78,21 +79,15 @@ const Addbuyer = () => {
                         <label className="font-bold ms-2 dark:text-white">Call Control Strategy</label><br />
                         <input {...register("call_control_strategy", { required: true })} className="w-full rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" />
                     </div>
-                    <div className="flex !items-center gap-4 w-full lg:w-1/2">
-                        <label className="font-bold ms-2 dark:text-white">Live call limit</label><br />
-
-                        <div className="flex items-start gap-2">
-                            <input {...register("live_call_limit", { required: true })} type="radio"   className=" rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="no limit" />No Limit
-                        </div>
-                        <div className="flex items-start gap-2">
-                            <input {...register("live_call_limit", { required: true })} type="radio"  className="  rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="set limit"/>Set Limit
-                        </div>
-
+                    <div className="space-y-2 w-full lg:w-1/2">
+                        <label className="font-bold ms-2 dark:text-white">Priority</label><br />
+                        <input {...register("priority", { required: true })} className="w-full rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" />
                     </div>
+                  
                 </div>
 
                 <div className="flex flex-col md:flex-row gap-4 lg:gap-8 mt-5">
-
+                  
                     <div className="flex !items-center gap-4 w-full lg:w-1/2">
                         <label className="font-bold ms-2 dark:text-white">Daily call limit</label><br />
 
@@ -124,25 +119,25 @@ const Addbuyer = () => {
                         <label className="font-bold ms-2 dark:text-white">Buyer Status</label><br />
 
                         <div className="flex items-start gap-2">
-                            <input {...register("buyer_status", { required: true })} type="radio"  className=" rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="no limit"/>No Limit
+                            <input {...register("buyer_status", { required: true })} type="radio"  className=" rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value={true}/>Active
                         </div>
                         <div className="flex items-start gap-2">
-                            <input {...register("buyer_status", { required: true })} type="radio"  className="  rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="set limit"/>Set Limit
+                            <input {...register("buyer_status", { required: true })} type="radio"  className="  rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value={false}/>Inactive
                         </div>
 
                     </div>
-
                     <div className="flex !items-center gap-4 w-full lg:w-1/2">
-                        <label className="font-bold ms-2 dark:text-white">Activa Hours</label><br />
-
+                        <label className="font-bold ms-2 dark:text-white">Live call limit</label><br />
+                        
                         <div className="flex items-start gap-2">
-                            <input {...register("active_hours", { required: true })} type="radio"  className=" rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="no limit"/>No Limit
+                            <input {...register("live_call_limit", { required: true })} type="radio"   className=" rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="no limit" />No Limit
                         </div>
                         <div className="flex items-start gap-2">
-                            <input {...register("active_hours", { required: true })} type="radio"  className="  rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="set limit" />Set Limit
+                            <input {...register("live_call_limit", { required: true })} type="radio"  className="  rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" value="set limit"/>Set Limit
                         </div>
-
+      
                     </div>
+                 
                 </div>
 
                 {/* <div className="ms-3">
