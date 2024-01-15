@@ -15,7 +15,7 @@ export type addBuyerInputs={
     priority:number,
     active_hours:string,
 
-}
+}   
 const Addbuyer = () => {
 
     const onSubmit = async(data:addBuyerInputs)=>{
