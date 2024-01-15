@@ -86,6 +86,18 @@ const Addbuyer = () => {
                   
                 </div>
 
+
+                <div className="flex flex-col md:flex-row gap-4 lg:gap-8 mt-4">
+                    <div className="space-y-2 w-full lg:w-1/2">
+                        <label className="font-bold ms-2 dark:text-white">Time Taken</label><br />
+                        <input {...register("campaign_name", { required: true })} className="w-full rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" />
+                    </div>
+                    <div className="space-y-2 w-full lg:w-1/2">
+                        <label className="font-bold ms-2 dark:text-white">Buyer Name</label><br />
+                        <input {...register("buyer_name", { required: true })} className="w-full rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" />
+                    </div>
+                </div>
+
                 <div className="flex flex-col md:flex-row gap-4 lg:gap-8 mt-5">
                   
                     <div className="flex !items-center gap-4 w-full lg:w-1/2">

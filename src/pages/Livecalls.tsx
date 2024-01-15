@@ -103,13 +103,13 @@ export default function Livecalls() {
                         {liveCalls.length > 0 && liveCalls?.map((call: any) =>
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-strokedark dark:bg-boxdark">
-                                    Publisher
+                                    {/* Publisher */}
                                 </th>
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
                                     {call?.forwardedFrom}
                                 </td>
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                    {"Ashok"}
+                                    {/* {} */}
                                 </td>
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
                                     {call?.to}
@@ -118,10 +118,10 @@ export default function Livecalls() {
                                     {call?.from}
                                 </td>
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                    N/A
+                                    {/* N/A */}
                                 </td>
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                    N/A
+                                    {/* N/A */}
                                 </td>
                             </tr>
                         )}

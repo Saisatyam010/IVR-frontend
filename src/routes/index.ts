@@ -5,6 +5,7 @@ import ManageDID from '../pages/ManageDID';
 import SignIn from '../pages/Authentication/SignIn';
 import ECommerce from '../pages/Dashboard/Dashboard';
 import Addbuyer from '../pages/Addbuyer';
+import CallRecording from '../pages/CallRecording';
 
 
 
@@ -50,6 +51,11 @@ const coreRoutes = [
     path: '/addbuyer',
     title: 'Add Buyer',
     component: Addbuyer
+  },
+  {
+    path: '/callRecorder',
+    title: 'Call Recorder',
+    component: CallRecording
   },
   {
     path: '/manage-did',

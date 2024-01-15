@@ -2,15 +2,17 @@ import DataTable from 'datatables.net-dt';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getCampainData } from '../../api/Addbuyer';
+import { CiPause1 } from "react-icons/ci";
 
 const Campaign = () => {
 
   const [addbuyer, setAddBuyer] = useState([{}])
+  const [pause,setPause] = useState(true)
 
   const addCampainData = async () => {
     const res = await getCampainData()
-    console.log(res+"data");
-    
+    console.log(res + "data");
+
     if (res.status == "success") {
       setAddBuyer(res.addBuyerMongo)
     }
@@ -30,11 +32,11 @@ const Campaign = () => {
         <div className="flex justify-end mb-6">
           <div className="flex gap-3">
             <Link to='/addbuyer'>
-            <button className="inline-flex items-center justify-center bg-primary py-2.5 rounded-xl px-4 text-sm text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5">
-              Add Buyer
-            </button>
+              <button className="inline-flex items-center justify-center bg-primary py-2.5 rounded-xl px-4 text-sm text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5">
+                Add Buyer
+              </button>
             </Link>
-          
+
           </div>
         </div>
         <table id="campaign-table" className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -81,11 +83,12 @@ const Campaign = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-boxdark dark:border-gray-700">
-              {
-                addbuyer.map((ele:any, index) =>
-                <>
-                <td className="px-6 py-4 dark:text-white">
+            {
+              addbuyer.map((ele: any, index) =>
+                <tr className="bg-white border-b dark:bg-boxdark dark:border-gray-700">
+
+
+                  <td className="px-6 py-4 dark:text-white">
                     {ele?.campaign_name}
                   </td>
                   <td className="px-6 py-4 dark:text-white">
@@ -119,19 +122,16 @@ const Campaign = () => {
                     {ele?.active_hours}
                   </td>
                   <td className="px-6 py-4 dark:text-white flex gap-3">
-                  <button>
-                    Pause
-                  </button>
+                    <button className={`whitespace-nowrap inline-flex gap-2 items-center ${pause?"bg-danger":"bg-success"}  py-2.5 rounded-lg px-3 text-sm text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5`} onClick={()=>setPause(!pause)}>
+                      <CiPause1 size={16} /> {pause?"Pause" : "Resume"}
+                    </button>
                   </td>
-                </>
-                  
-                )
-              }
 
-            </tr>
 
-            
-            
+                </tr>)}
+
+
+
           </tbody>
         </table>
       </div>
