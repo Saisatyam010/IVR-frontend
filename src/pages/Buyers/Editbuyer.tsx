@@ -22,7 +22,7 @@ const Editbuyer = () => {
         const data=await getSingleBuyer(buyerId);
         // console.log(JSON.stringify(data.singleBuyer)+"buyer")
         setBuyer(data.singleBuyer)
-        reset(data.singleBuyer)
+        // reset(data.singleBuyer);
     }
     useEffect(()=>{
         if(buyerId)
@@ -45,6 +45,7 @@ const Editbuyer = () => {
      const res = await  editBuyer(data,buyerId) 
      if(res.status == "success"){
         alert(res.message) 
+        console.log(res.updateData)
      } 
      else{
         alert(res.message)
