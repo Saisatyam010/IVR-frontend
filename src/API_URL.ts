@@ -1,1 +1,1 @@
-export const API_URL = "http://localhost:1337"
+export const API_URL = "https://ivr-backend-495f2e9ffa34.herokuapp.com"

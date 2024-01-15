@@ -4,14 +4,17 @@ import ManageDID from '../pages/ManageDID';
 
 import SignIn from '../pages/Authentication/SignIn';
 import ECommerce from '../pages/Dashboard/Dashboard';
-import Addbuyer from '../pages/Addbuyer';
+import Addbuyer from '../pages/Buyers/Addbuyer';
 import CallRecording from '../pages/CallRecording';
 
 
 
 
 
-const Campaign = lazy(() => import('../pages/ManageCampaigns/Campaign'));
+const ManageBuyer = lazy(() => import('../pages/Buyers/ManageBuyer'));
+const Addbuyer = lazy(() => import('../pages/Buyers/Addbuyer'));
+const Editbuyer = lazy(() => import('../pages/Buyers/Editbuyer'));
+
 const BlockCallerID = lazy(() => import('../pages/BlockCallerID'));
 const Livecalls = lazy(() => import('../pages/Livecalls'));
 const Callhistory = lazy(() => import('../pages/Callhistory'));
@@ -26,20 +29,26 @@ const Alerts = lazy(() => import('../pages/UiElements/Alerts'));
 const Buttons = lazy(() => import('../pages/UiElements/Buttons'));
 const ManageCampaigns=lazy(()=>import('../pages/ManageCampaigns/ManagCampaigns'))
 const coreRoutes = [
-  {
-    path: '/manage-campaign/:campaignId',
-    title: 'Campaign',
-    component: Campaign
-  },
+ 
   {
     path:'/dashboard',
     title:'Dashbaord',
     component:ECommerce
   },
   {
-    path: '/manage-campaign',
-    title: 'All Buyer',
-    component: Campaign
+    path: '/manage-buyer',
+    title: 'Manage Buyer',
+    component: ManageBuyer
+  },
+  {
+    path: '/add-buyer',
+    title: 'Add Buyer',
+    component: Addbuyer
+  },
+  {
+    path: '/edit-buyer/:id',
+    title: 'Edit Buyer',
+    component: Editbuyer
   },
  
   {

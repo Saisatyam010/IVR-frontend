@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form"
-import {addBuyerData} from "../api/Addbuyer"
-import { Link } from "react-router-dom"
-export type addBuyerInputs={
+import {editBuyer,getSingleBuyer} from "../../api/Buyer"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+export type BuyerInputs={
     campaign_name:string,
     buyer_name:string,
     destination_number:string,
@@ -13,37 +14,53 @@ export type addBuyerInputs={
     monthly_call_limit:string,
     buyer_status:boolean,
     priority:number,
-    active_hours:string,
-
 }   
-const Addbuyer = () => {
-
-    const onSubmit = async(data:addBuyerInputs)=>{
-     const res = await  addBuyerData(data)
-     console.log(res);
-     
-     if(res.status == "success"){
-        alert(res.message)
-     }
-    
+const Editbuyer = () => {
+    const [buyer,setBuyer]=useState({})
+    const buyerId=useParams().id
+    const fetchSingleBuyer=async(buyerId:string)=>{
+        const data=await getSingleBuyer(buyerId);
+        // console.log(JSON.stringify(data.singleBuyer)+"buyer")
+        setBuyer(data.singleBuyer)
+        reset(data.singleBuyer)
     }
+    useEffect(()=>{
+        if(buyerId)
+       fetchSingleBuyer(buyerId)
+       
+    },[])
+    const navigate=useNavigate();
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
-      } = useForm<addBuyerInputs>()
+      } = useForm<BuyerInputs>();
+
+
+      
+    const onSubmit = async(data:BuyerInputs)=>{
+    console.log(data)
+     const res = await  editBuyer(data,buyerId) 
+     if(res.status == "success"){
+        alert(res.message) 
+     } 
+     else{
+        alert(res.message)
+     }
+      navigate('/manage-buyer')
+    }
+   
 
     return (
         <>
-        <p className="font-bold text-[30px] pb-4 ms-2">
-    Add Buyer
-</p>
-        <div className="dark:border-strokedark dark:bg-boxdark rounded-xl rounded-xl bg-white shadow-md">
+        <p className="font-bold text-[30px] pb-4 ms-2"> Edit Buyer</p>
+        <div className="dark:border-strokedark dark:bg-boxdark  rounded-xl bg-white shadow-md">
             <form className="p-2 lg:p-8" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col md:flex-row gap-4 lg:gap-8">
                     <div className="space-y-2 w-full lg:w-1/2">
-                        <label className="font-bold ms-2 dark:text-white">Campaign Range</label><br />
+                        <label className="font-bold ms-2 dark:text-white">Campaign Name</label><br />
                         <input {...register("campaign_name", { required: true })} className="w-full rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" />
                     </div>
                     <div className="space-y-2 w-full lg:w-1/2">
@@ -173,11 +190,11 @@ const Addbuyer = () => {
                 </div> */}
                 <p className="mt-4 text-center mb-5 p-2 mt-5">
                     <button type="submit" className="inline-flex items-center justify-center bg-primary py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 rounded-xl"  >
-                        add
+                        Submit
                     </button>
                     <Link to="/manage-campaign">
                     <button className="inline-flex items-center justify-center bg-[#8A99AF] ms-4 py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10 rounded-xl"  >
-                        cancel
+                        Cancel
                     </button>
                     </Link>
                     
@@ -191,4 +208,4 @@ const Addbuyer = () => {
     )
 }
 
-export default Addbuyer
+export default Editbuyer
