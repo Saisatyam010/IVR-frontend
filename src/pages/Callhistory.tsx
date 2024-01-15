@@ -8,7 +8,7 @@ export default function Callhistory () {
     const [callHistory,setCallHistory]=useState<any[]>([])
     const [selectionRange,setSelectionRange]=useState({
         startDate: new Date(new Date().setHours(0,0,0)),
-        endDate: new Date(new Date().setHours(23,59,59)),
+        endDate: new Date(new Date().setHours(0,0,0)),
         key: 'selection',
       })
     const [loading,setLoading]=useState(true)
@@ -19,7 +19,7 @@ export default function Callhistory () {
             setSelectionRange({...selectionRange,startDate:ranges.selection.startDate,endDate:ranges.selection.endDate});
            
             setIsShownDateRange(false);
-            fetchCallHistory();
+          
            
     }
     const fetchCallHistory=async()=>{
@@ -41,7 +41,7 @@ export default function Callhistory () {
     }
     useEffect(()=>{
         fetchCallHistory();
-    },[])
+    },[selectionRange])
     function calculateDuration(startTimestamp:string, endTimestamp:string) {
         const startDate:any = new Date(startTimestamp);
         const endDate:any = new Date(endTimestamp);
@@ -130,10 +130,10 @@ export default function Callhistory () {
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                         <tr className="">
-                            <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
+                            <th scope="col" className="px-4 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
                                 Start Time
                             </th>
-                            <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
+                            <th scope="col" className=" px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
                                 End Time
                             </th>
                             <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
@@ -173,10 +173,12 @@ export default function Callhistory () {
                             
                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-strokedark dark:bg-boxdark">
-                               {dateFormat(call.startTime, "dd mmm yyyy | h:MM:ss TT")}
+                               {dateFormat(call.startTime, "dd mmm yyyy")}<br/>
+                               {dateFormat(call.startTime, "h:MM:ss TT")}
                             </th>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                            {call.endTime}
+                            {dateFormat(call.endTime, "dd mmm yyyy")}<br/>
+                            {dateFormat(call.endTime, "h:MM:ss TT")}
                             </td>
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
                                 
@@ -204,7 +206,7 @@ export default function Callhistory () {
                         )})}
                         {callHistory.length==0&&
                         <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
-                            <td colSpan={10} >No Data Found</td>
+                            <td colSpan={10} className="py-4 text-center" >No Data Found</td>
                         </tr>}
                     </tbody>}
                 </table>
