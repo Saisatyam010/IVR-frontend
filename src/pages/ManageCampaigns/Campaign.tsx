@@ -1,7 +1,7 @@
 import DataTable from 'datatables.net-dt';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getCampainData } from '../../api/Addbuyer';
+import { deleteBuyerId, getCampainData } from '../../api/Addbuyer';
 import { CiPause1 } from "react-icons/ci";
 
 const Campaign = () => {
@@ -18,6 +18,15 @@ const Campaign = () => {
     }
   }
 
+
+  const deleteBuyer = async (id: any) => {
+    const res = await deleteBuyerId(id)
+    if(res.status == "success"){
+      alert("deleted successfully")
+      addCampainData()
+    }
+  }
+
   useEffect(() => {
     addCampainData()
   }, [])
@@ -28,7 +37,7 @@ const Campaign = () => {
       <h2 className="text-base md:text-lg xl:text-3xl 2xl:text-3xl mb-4">
         Campaign Name:<span className='capitalize'> {params.campaignId} </span> | Tollfree Numbers : (18669932492)
       </h2>
-      <div className="bg-white dark:bg-boxdark  rounded-xl p-4">
+      <div className="bg-white dark:bg-boxdark  rounded-xl p-4 overflow-auto">
         <div className="flex justify-end mb-6">
           <div className="flex gap-3">
             <Link to='/addbuyer'>
@@ -125,6 +134,12 @@ const Campaign = () => {
                     <button className={`whitespace-nowrap inline-flex gap-2 items-center ${pause?"bg-danger":"bg-success"}  py-2.5 rounded-lg px-3 text-sm text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5`} onClick={()=>setPause(!pause)}>
                       <CiPause1 size={16} /> {pause?"Pause" : "Resume"}
                     </button>
+                
+
+                    <button className="whitespace-nowrap inline-flex gap-2 items-center bg-danger rounded-lg   text-sm text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5" onClick={()=>deleteBuyer(ele._id)}>
+                      Delete
+                    </button>
+
                   </td>
 
 

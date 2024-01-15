@@ -15,7 +15,7 @@ export const addBuyerData = async (data:addBuyerInputs)=>{
 
 
 export const getCampainData = async ()=>{
-    const res = await fetch(`http://localhost:1337/auth/getAllBuyerDetail`,{
+    const res = await fetch(`https://ivr-backend-495f2e9ffa34.herokuapp.com/auth/getAllBuyerDetail`,{
         method:"get",
         headers:{
             "Content-type" : "application/json",
@@ -26,3 +26,11 @@ export const getCampainData = async ()=>{
     return await res.json()
 }
 
+
+export const deleteBuyerId = async (id:number)=>{
+    const res = await fetch(`${API_URL}/auth/deleteBuyerData/${id}`,{
+        method:"delete",
+     
+    })
+    return await res.json()
+}
