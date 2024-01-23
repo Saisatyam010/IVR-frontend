@@ -1,4 +1,5 @@
 
+
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { deleteBuyerId, getCampainData } from '../../api/Buyer';
@@ -22,12 +23,13 @@ const ManageBuyer = () => {
     const res = await deleteBuyerId(id)
     if(res.status == "success"){
       alert("deleted successfully")
-      addCampainData()
+      fetchBuyers()
     }
   }
   useEffect(() => {
-    addCampainData()
+    fetchBuyers()
   }, [])
+
 
   return (
     <div className="relative overflow-x-auto">
@@ -48,10 +50,10 @@ const ManageBuyer = () => {
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr className="bg-white border-b dark:bg-boxdark dark:border-gray-700">
               <th scope="col" className="px-6 py-3">
-                Name
+               Buyer Name
               </th>
               <th scope="col" className="px-6 py-3">
-                Number
+                Buyer Number
               </th>
               <th scope="col" className="px-6 py-3">
                 AHT
@@ -86,17 +88,20 @@ const ManageBuyer = () => {
             </tr>
           </thead>
           <tbody>
-            {
+            { addbuyer.length>0&&
               addbuyer.map((ele: any, index) =>
                 <tr className="bg-white border-b dark:bg-boxdark dark:border-gray-700">
                   <td className="px-6 py-4 dark:text-white">
                     {ele?.campaign_name}
                   </td>
                   <td className="px-6 py-4 dark:text-white">
-                    {ele?.buyer_name}
+                  {ele?.buyer_name}
                   </td>
                   <td className="px-6 py-4 dark:text-white">
-                    {ele?.destination_number}
+                  {ele?.destination_number}
+                  </td>
+                  <td className="px-6 py-4 dark:text-white">
+
                   </td>
                   <td className="px-6 py-4 dark:text-white">
                     {ele?.distribution_weightage}

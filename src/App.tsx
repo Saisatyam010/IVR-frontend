@@ -8,16 +8,25 @@ import SignUp from './pages/Authentication/SignUp';
 import Loader from './common/Loader';
 import routes from './routes';
 import AuthProvider, { AuthContext, useAuth } from './context/auth';
+import PrivateRoute from './PrivateRoute';
+import { useCookies } from 'react-cookie';
 
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
-
+type EntryInputs={
+   name:String,
+   sale1:Number,
+   rate1:Number,
+   sale2:Number,
+   
+}
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
-  const ctx=useAuth();
+  const [cookies]=useCookies();
+  console.log(cookies['token']+"token");
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
-
+ 
   return loading ? (
     <Loader />
   ) : (
@@ -29,12 +38,12 @@ function App() {
       />
       <AuthProvider>
       <Routes>
-        <Route path="/" element={ctx?.isAuthenticated?<Navigate to="/dashboard"/>:<Navigate to="/auth/signin"/>}/>
+        <Route path="/" element={cookies['token'] ? <Navigate to="/dashboard" /> : <Navigate to="/auth/signin" />} />
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
      
         <Route element={<DefaultLayout />}>
-          <Route index element={<Dashboard />} />
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           {routes.map((routes, index) => {
             const { path, component: Component } = routes;
             return (

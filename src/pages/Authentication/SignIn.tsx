@@ -4,7 +4,7 @@ import Logo from '../../images/logo/logo.svg';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import api from '../../services/api';
-import { AuthContextType, useAuth } from '../../context/auth';
+import {  useAuth } from '../../context/auth';
 const SignIn = () => {
   type Inputs ={
    email:string;
@@ -25,15 +25,19 @@ const SignIn = () => {
       const res=await api.post('/auth/login',JSON.stringify(data),{
         headers:{'Content-Type':'application/json'}
       })
-      if(res.data.status="sucess")
+      if(res.data.status="success")
       {
         ctx?.login(res.data.token)
       }
   }
+  // useEffect(()=>{
+  //   if(ctx?.isAuthenticated)
+  //   window.location.href="/dashboard";
+  // },[])
   return (
     <>
-      <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-        <div className="flex flex-wrap items-center">
+      <div className="rounded-sm border border-stroke h-screen  bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+        <div className="flex flex-wrap items-center  ">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
               <Link className="mb-5.5 inline-block" to="/">
@@ -173,7 +177,7 @@ const SignIn = () => {
 
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <span className="mb-1.5 block font-medium">Start for free</span>
+             
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 Sign In to TailAdmin
               </h2>
@@ -250,7 +254,7 @@ const SignIn = () => {
                 <div className="mb-5">
                   <input
                     type="submit"
-                    value="Sign In"
+                    value="Log In"
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                   />
                 </div>
