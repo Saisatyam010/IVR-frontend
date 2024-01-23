@@ -76,21 +76,13 @@ export default function Livecalls() {
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                         <tr className="">
-                            <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
-                                Campaign
-                            </th>
-                            <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
-                                Did
-                            </th>
+                            
+                           
+                            
                             <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
                                 Buyer
                             </th>
-                            <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
-                                Target Number
-                            </th>
-                            <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
-                                Caller Id
-                            </th>
+                            
                             <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
                                 Duration
                             </th>
@@ -102,26 +94,16 @@ export default function Livecalls() {
                     <tbody className="dark:border-strokedark dark:bg-boxdark">
                         {liveCalls.length > 0 && liveCalls?.map((call: any) =>
                             <tr className="bg-white border-b dark:bg-gray-800 dark:border-strokedark dark:bg-boxdark">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-strokedark dark:bg-boxdark">
-                                    {/* Publisher */}
-                                </th>
+                                 
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
                                     {call?.forwardedFrom}
                                 </td>
-                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                    {/* {} */}
-                                </td>
+                                 
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
                                     {call?.to}
                                 </td>
                                 <td className="px-6 py-4 dark:border-strokedark dark:text-white">
                                     {call?.from}
-                                </td>
-                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                    {/* N/A */}
-                                </td>
-                                <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                    {/* N/A */}
                                 </td>
                             </tr>
                         )}
