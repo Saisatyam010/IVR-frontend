@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { deleteBuyerId, getCampainData } from '../../api/Buyer';
 import { CiPause1 } from "react-icons/ci";
 
@@ -9,7 +9,7 @@ const ManageBuyer = () => {
   const [addbuyer, setAddBuyer] = useState([{}])
   const navigate=useNavigate();
   const [pause,setPause] = useState(true)
-  const addCampainData = async () => {
+  const fetchBuyers = async () => {
     const res = await getCampainData()
     console.log(res + "data");
     if (res.status == "success") {

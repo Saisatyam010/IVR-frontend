@@ -10,7 +10,7 @@ export const getLiveCalls=async()=>{
 
 
 export const getLivecalls = async ()=>{
-    const res = await fetch(`http://localhost:1337/auth/live-calls`,{
+    const res = await fetch(`https://ivr-backend-495f2e9ffa34.herokuapp.com/auth/live-calls`,{
         method:"get",
         headers:{
             "Content-type" : "application/json",

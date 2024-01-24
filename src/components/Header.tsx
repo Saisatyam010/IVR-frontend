@@ -4,11 +4,33 @@ import DarkModeSwitcher from './DarkModeSwitcher';
 import DropdownMessage from './DropdownMessage';
 import DropdownNotification from './DropdownNotification';
 import DropdownUser from './DropdownUser';
+import { useEffect, useState } from 'react';
+import { getLivecalls } from '../api/liveCalls';
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
+  const [liveCalls, setLiveCalls] = useState([{}])
+   
+
+  const livedat = async () => {
+      const res = await getLivecalls()
+      console.log( res+"tyt");
+      setLiveCalls(res.calls.filter((call:any)=>call.parentCallSid!==null))
+      
+  }
+  
+  useEffect(() => {
+      
+  let stop = setInterval(()=>{
+          livedat();
+      },1000)
+      return ()=>{
+          clearInterval(stop)
+      }
+  }, [])
+  
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between py-4 px-4 shadow-2 md:px-6 2xl:px-11">
@@ -106,7 +128,7 @@ const Header = (props: {
               Missed : 0
             </div>
             <div>
-              Live Calls : 0
+              Live Calls : {liveCalls?.length}
             </div>
             {/* <!-- Dark Mode Toggler --> */}
             <DarkModeSwitcher />
