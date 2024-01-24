@@ -6,9 +6,10 @@ import { MdBlock, MdManageAccounts, MdOutlinePayment, MdSupportAgent } from "rea
 import { FiPhoneCall } from "react-icons/fi";
 import { TbReportSearch } from "react-icons/tb";
 import { LiaShareAltSolid } from "react-icons/lia"
-import { RiGroupLine } from "react-icons/ri";
+
 import { FaRegAddressCard } from "react-icons/fa";
-import { IoNotifications } from "react-icons/io5"
+
+import { SlLogout } from "react-icons/sl";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { useAuth } from '../context/auth';
 interface SidebarProps {
@@ -380,7 +381,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     'bg-graydark dark:bg-meta-4'
                     }`}
                 >
-                  <FaRegAddressCard size={20} />
+                  <SlLogout  size={20} />
                   Logout
                 </NavLink>
               </li>
