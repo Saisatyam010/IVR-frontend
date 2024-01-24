@@ -10,6 +10,7 @@ import { RiGroupLine } from "react-icons/ri";
 import { FaRegAddressCard } from "react-icons/fa";
 import { IoNotifications } from "react-icons/io5"
 import { IoMdAddCircleOutline } from "react-icons/io";
+import { useAuth } from '../context/auth';
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
@@ -18,7 +19,7 @@ interface SidebarProps {
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const location = useLocation();
   const { pathname } = location;
-
+  const ctx=useAuth();
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
 
@@ -246,7 +247,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item ManageCampaigns --> */}
               <li>
                 <NavLink
-                  to="/manage-campaign"
+                  to="/manage-buyer"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('manage-campaign') &&
                     'bg-graydark dark:bg-meta-4'
                     }`}
@@ -371,7 +372,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   Rate Card
                 </NavLink>
               </li>
- 
+              <li>
+                <NavLink
+                  to="/auth/signin"
+                  onClick={() => {ctx?.logout()}}
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('settings') &&
+                    'bg-graydark dark:bg-meta-4'
+                    }`}
+                >
+                  <FaRegAddressCard size={20} />
+                  Logout
+                </NavLink>
+              </li>
 
             </ul>
           </div>

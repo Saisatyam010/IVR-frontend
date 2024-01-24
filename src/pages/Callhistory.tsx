@@ -139,9 +139,7 @@ export default function Callhistory () {
                             <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
                                 SRC
                             </th>
-                            <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
-                                DID
-                            </th>
+                           
                             <th scope="col" className="px-6 py-3 dark:border-strokedark dark:bg-boxdark dark:text-white">
                                 Buyer
                             </th>
@@ -180,9 +178,7 @@ export default function Callhistory () {
                             {dateFormat(call.endTime, "dd mmm yyyy")}<br/>
                             {dateFormat(call.endTime, "h:MM:ss TT")}
                             </td>
-                            <td className="px-6 py-4 dark:border-strokedark dark:text-white">
-                                
-                            </td>
+                           
                             <td className="px-6 py-4 dark:border-strokedark dark:text-white">
                             {call.forwardedFrom}
                             </td>

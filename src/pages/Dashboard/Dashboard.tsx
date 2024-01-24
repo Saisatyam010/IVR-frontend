@@ -4,6 +4,7 @@ import CardThree from '../../components/CardThree.tsx';
 import CardTwo from '../../components/CardTwo.tsx';
 import CardFifth from '../../components/CartFifth.tsx';
 import CardSixth from '../../components/CartSixth.tsx';
+import { useAuth } from '../../context/auth.tsx';
 // import ChartOne from '../../components/ChartOne.tsx';
 // import ChartThree from '../../components/ChartThree.tsx';
 // import ChartTwo from '../../components/ChartTwo.tsx';
@@ -12,6 +13,8 @@ import CardSixth from '../../components/CartSixth.tsx';
 // import TableOne from '../../components/TableOne.tsx';
 
 const ECommerce = () => {
+  const ctx = useAuth();
+  console.log(ctx?.isAuthenticated+"isAuthenticated");
   return (
     <>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
