@@ -1,25 +1,12 @@
 import { useForm } from "react-hook-form"
-import {addBuyerData} from "../api/Addbuyer"
-import { Link } from "react-router-dom"
-export type addBuyerInputs={
-    campaign_name:string,
-    buyer_name:string,
-    destination_number:string,
-    distribution_weightage:number,
-    ring_timeout:string,
-    call_control_strategy:string,
-    live_call_limit:string,
-    daily_call_limit:string,
-    buyer_group:string,
-    monthly_call_limit:string,
-    buyer_status:boolean,
-    priority:number,
-    active_hours:string,
-}
+import { BuyerInputs } from "../../types/BuyerInputs"
+import { Link, useNavigate } from "react-router-dom"
+import { addBuyerData } from "../../api/Buyer"
+
   
 const Addbuyer = () => {
-
-    const onSubmit = async(data:addBuyerInputs)=>{
+   const navigate=useNavigate();
+    const onSubmit = async(data:BuyerInputs)=>{
      const res = await  addBuyerData(data)
      console.log(res);
      
@@ -46,7 +33,7 @@ const Addbuyer = () => {
                     <div className="space-y-2 w-full lg:w-1/2">
                         <label className="font-bold ms-2 dark:text-white">Campaign Name</label><br />
                         <input {...register("campaign_name", { required: true })} className="w-full rounded-xl mt-2 border-bg-gray focus:outline-none bg-transparent border border-whote  p-3" />
-                            
+                        {errors.campaign_name && <span className="text-danger m-2">This field is required</span>}  
                     </div>
                    
                     <div className="space-y-2 w-full lg:w-1/2">

@@ -77,10 +77,16 @@ const ManageBuyer = () => {
                 Live Calls Cap
               </th>
               <th scope="col" className="px-6 py-3">
-                Distribution Value
+                Priority
               </th>
               <th scope="col" className="px-6 py-3">
-                Distribution Value
+                Ring Timeout
+                </th>
+                <th scope="col" className="px-6 py-3">
+                Call Control Strategy
+                </th>
+              <th scope="col" className="px-6 py-3">
+                Distribution Weightage
               </th>
               <th scope="col" className="px-6 py-3 text-center">
                 Action
@@ -92,19 +98,35 @@ const ManageBuyer = () => {
               addbuyer.map((ele: any, index) =>
                 <tr className="bg-white border-b dark:bg-boxdark dark:border-gray-700">
                   <td className="px-6 py-4 dark:text-white">
-                    {ele?.campaign_name}
-                  </td>
-                  <td className="px-6 py-4 dark:text-white">
-                  {ele?.buyer_name}
+                    {ele?.buyer_name}
                   </td>
                   <td className="px-6 py-4 dark:text-white">
                   {ele?.destination_number}
                   </td>
                   <td className="px-6 py-4 dark:text-white">
-
+                    NA
+                  </td>
+                 
+                  <td className="px-6 py-4 dark:text-white">
+                  NA
                   </td>
                   <td className="px-6 py-4 dark:text-white">
-                    {ele?.distribution_weightage}
+                   NA
+                  </td>
+                  <td className="px-6 py-4 dark:text-white">
+                    NA
+                  </td>
+                  <td className="px-6 py-4 dark:text-white">
+                   NA
+                  </td>
+                  <td className="px-6 py-4 dark:text-white">
+                  NA
+                  </td>
+                  <td className="px-6 py-4 dark:text-white">
+                  {ele?.live_call_limit}
+                  </td>
+                  <td className="px-6 py-4 dark:text-white">
+                    {ele?.priority}
                   </td>
                   <td className="px-6 py-4 dark:text-white">
                     {ele?.ring_timeout}
@@ -113,19 +135,7 @@ const ManageBuyer = () => {
                     {ele?.call_control_strategy}
                   </td>
                   <td className="px-6 py-4 dark:text-white">
-                    {ele?.live_call_limit}
-                  </td>
-                  <td className="px-6 py-4 dark:text-white">
-                    {ele?.daily_call_limit}
-                  </td>
-                  <td className="px-6 py-4 dark:text-white">
-                    {ele?.monthly_call_limit}
-                  </td>
-                  <td className="px-6 py-4 dark:text-white">
-                    {ele?.buyer_status}
-                  </td>
-                  <td className="px-6 py-4 dark:text-white">
-                    {ele?.active_hours}
+                    {ele?.distribution_weightage}
                   </td>
                   <td className="px-6 py-4 dark:text-white flex gap-3">
                     <button className={`whitespace-nowrap inline-flex gap-2 items-center ${pause?"bg-danger":"bg-success"}  py-2.5 rounded-lg px-3 text-sm text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5`} onClick={()=>setPause(!pause)}>

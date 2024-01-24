@@ -4,7 +4,7 @@ export type BuyerInputs={
     destination_number:string,
     distribution_weightage:number,
     ring_timeout:number,
-    buyer_group:String,
+    buyer_group:string,
     call_control_strategy:String,
     live_call_limit:String,
     daily_call_limit:String,

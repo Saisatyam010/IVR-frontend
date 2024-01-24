@@ -1,5 +1,5 @@
 import { API_URL } from "../API_URL"
-import {  BuyerInputs } from "../pages/Buyers/Addbuyer"
+import { BuyerInputs } from "../types/BuyerInputs"
 
 export const addBuyerData = async (data:BuyerInputs)=>{
     const res = await fetch(`${API_URL}/auth/addbuyer`,{
